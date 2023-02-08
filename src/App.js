@@ -5,7 +5,7 @@ import jsonData from "./data.json";
 function App() {
   return (
     <div className="App">
-      <Tweet tweet={jsonData[0]} />
+      <Tweet tweets={jsonData} />
     </div>
   );
 }

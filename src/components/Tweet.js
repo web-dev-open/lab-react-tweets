@@ -1,40 +1,33 @@
+import Actions from "./Actions";
+import Message from "./Message";
 import ProfileImage from "./ProfileImage";
+import TimeStamp from "./TimeStamp";
+import User from "./User";
 
 function Tweet(props) {
-  const { tweet } = props;
-  const {
-    user: { name, image, handle },
-    timestamp,
-    message,
-  } = tweet;
-  return (
-    <div className="tweet">
-      <ProfileImage profileImage={image} />
+  const { tweets } = props;
+  // const {
+  //   user: { name, image, handle },
+  //   timestamp,
+  //   message,
+  // } = tweet;
 
-      <div className="body">
-        <div className="top">
-          <span className="user">
-            <span className="name">{name}</span>
-            <span className="handle">@{handle}</span>
-          </span>
-
-          <span className="timestamp">{timestamp}</span>
+  return tweets.map((tweet, i) => {
+    return (
+      <div className="tweet" key={i}>
+        <ProfileImage profileImage={tweet.user.image} />
+        <div className="body">
+          <div className="top">
+            <User name={tweet.user.name} handle={tweet.user.handle} />
+            <TimeStamp timestamp={tweet.timestamp} />
+          </div>
+          <Message message={tweet.message} />
+          <Actions />
         </div>
-
-        <p className="message">{message}</p>
-
-        <div className="actions">
-          {/* Font Awesome icons */}
-          <i class="far fa-comment"></i>
-          <i class="fas fa-retweet"></i>
-          <i class="far fa-heart"></i>
-          <i class="fas fa-share"></i>
-        </div>
+        <i className="fas fa-ellipsis-h"></i>
       </div>
-
-      <i class="fas fa-ellipsis-h"></i>
-    </div>
-  );
+    );
+  });
 }
 
 export default Tweet;
