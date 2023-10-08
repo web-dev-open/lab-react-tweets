@@ -1,40 +1,33 @@
-function Tweet() {
+import Actions from "./Actions";
+import Message from "./Message";
+import ProfileImage from "./ProfileImage";
+import TimeStamp from "./TimeStamp";
+import User from "./User";
+
+function Tweet(props) {
+  const { tweets } = props;
+  // const {
+  //   user: { name, image, handle },
+  //   timestamp,
+  //   message,
+  // } = tweet;
+
+  return tweets.map((tweet, i) => {
     return (
-      <div className="tweet">
-        <img
-          src="https://imgur.com/ebIbhBy.png"
-          className="profile"
-          alt="profile"
-        />
-  
+      <div className="tweet" key={i}>
+        <ProfileImage profileImage={tweet.user.image} />
         <div className="body">
           <div className="top">
-            <span className="user">
-              <span className="name">Root Learn</span>
-              <span className="handle">@root.learn</span>
-            </span>
-  
-            <span className="timestamp">Nov 30, 2022</span>
+            <User name={tweet.user.name} handle={tweet.user.handle} />
+            <TimeStamp timestamp={tweet.timestamp} />
           </div>
-  
-          <p className="message">
-            On December 7th, we will be hosting a #webinar that will introduce you
-            to #SQL! Are you ready? 🚀
-          </p>
-  
-          <div className="actions">
-            {/* Font Awesome icons */}
-            <i class="far fa-comment"></i>
-            <i class="fas fa-retweet"></i>
-            <i class="far fa-heart"></i>
-            <i class="fas fa-share"></i>
-          </div>
+          <Message message={tweet.message} />
+          <Actions />
         </div>
-  
-        <i class="fas fa-ellipsis-h"></i>
+        <i className="fas fa-ellipsis-h"></i>
       </div>
     );
-  }
-  
-  export default Tweet;
-  
+  });
+}
+
+export default Tweet;
