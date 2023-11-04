@@ -15,7 +15,7 @@ const tweetsArray = [
   {
     user: {
       name: "Thoughts of Dog®",
-      image: "https://i.imgur.com/b0EdHVV.jpg",
+      image: "https://pbs.twimg.com/profile_images/1046968391389589507/_0r5bQLl_400x400.jpg",
       handle: "dog_feelings",
     },
     timestamp: "2h ago",
@@ -25,7 +25,7 @@ const tweetsArray = [
   {
     user: {
       name: "Thoughts of Dog®",
-      image: "https://i.imgur.com/b0EdHVV.jpg",
+      image: "https://pbs.twimg.com/profile_images/1046968391389589507/_0r5bQLl_400x400.jpg",
       handle: "dog_feelings",
     },
     timestamp: "3h ago",
@@ -38,6 +38,9 @@ function App() {
   return (
     <div className="App">
       <Tweet tweet={ tweetsArray[0] } />
+      <Tweet tweet={ tweetsArray[1] } />
+      <Tweet tweet={ tweetsArray[2] } />
+      
     </div>
   );
 }
